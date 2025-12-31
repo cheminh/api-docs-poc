@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkapi_docs_poc=globalThis.webpackChunkapi_docs_poc||[]).push([[647],{7121(s,e,a){a.r(e),a.d(e,{default:()=>l});a(96540);var c=a(34164),r=a(17559),o=a(45500),p=a(22831),u=a(2828),i=a(74848);function l(s){return(0,i.jsx)(o.e3,{className:(0,c.A)(r.G.wrapper.docsPages),children:(0,i.jsx)(u.A,{children:(0,p.v)(s.route.routes)})})}}}]);
