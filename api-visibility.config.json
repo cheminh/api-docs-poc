@@ -1,0 +1,123 @@
+{
+  "distributionApi": {
+    "baseUrl": "https://api.prod.apim.manulife.io/int/cdt/iic/travel/tripxdistribution/api/prod",
+    "environment": "uat",
+    "endpoints": [
+      {
+        "path": "GET /health",
+        "enabled": true,
+        "pathOverride": "/health",
+        "summary": "Health check endpoint",
+        "description": "Returns the health status of the Distribution API service"
+      },
+      {
+        "path": "GET /agents",
+        "enabled": true,
+        "summary": "Retrieve profile for a new agent",
+        "description": "Search by case insensitive query parameters and return new agent information"
+      },
+      {
+        "path": "PATCH /activateProfile",
+        "enabled": true,
+        "summary": "Activate agent profile",
+        "description": "Activates a new agent profile by updating their status in the system"
+      }
+    ]
+  },
+  "policyApi": {
+    "baseUrl": "https://tripx-policy-api.prd.aks.manulife.ca",
+    "environment": "uat",
+    "endpoints": [
+      {
+        "path": "GET /policies",
+        "enabled": true,
+        "summary": "List all policies",
+        "description": "Retrieve a list of all insurance policies with optional filtering"
+      },
+      {
+        "path": "POST /policies",
+        "enabled": true,
+        "summary": "Create a new policy",
+        "description": "Create a new insurance policy with the provided details"
+      },
+      {
+        "path": "GET /policies/{policyId}",
+        "enabled": true,
+        "summary": "Get policy by ID",
+        "description": "Retrieve detailed information about a specific policy by its ID"
+      }
+    ]
+  },
+  "quoteApi": {
+    "baseUrl": "https://tripx-quote-api.prd.aks.manulife.ca",
+    "environment": "uat",
+    "endpoints": [
+      {
+        "path": "GET /quotes",
+        "enabled": true,
+        "summary": "List all quotes",
+        "description": "Retrieve a list of all insurance quotes with optional filtering"
+      },
+      {
+        "path": "POST /quotes",
+        "enabled": true,
+        "summary": "Create a new quote",
+        "description": "Generate a new insurance quote based on the provided parameters"
+      },
+      {
+        "path": "GET /quotes/{quoteId}",
+        "enabled": true,
+        "summary": "Get quote by ID",
+        "description": "Retrieve detailed information about a specific quote by its ID"
+      }
+    ]
+  },
+  "recommendationApi": {
+    "baseUrl": "https://tripx-recommendation-api.prd.aks.manulife.ca",
+    "environment": "uat",
+    "endpoints": [
+      {
+        "path": "GET /recommendations",
+        "enabled": true,
+        "summary": "Get personalized recommendations",
+        "description": "Retrieve personalized product recommendations based on user profile and preferences"
+      },
+      {
+        "path": "POST /recommendations",
+        "enabled": true,
+        "summary": "Generate recommendations",
+        "description": "Generate new personalized recommendations based on provided criteria"
+      }
+    ]
+  },
+  "productApi": {
+    "baseUrl": "https://tripx-product-api.prd.aks.manulife.ca",
+    "environment": "uat",
+    "endpoints": [
+      {
+        "path": "GET /products",
+        "enabled": true,
+        "summary": "List all products",
+        "description": "Retrieve a list of all available insurance products in the catalog"
+      },
+      {
+        "path": "POST /products",
+        "enabled": true,
+        "summary": "Create a new product",
+        "description": "Add a new insurance product to the catalog"
+      },
+      {
+        "path": "GET /products/{productId}",
+        "enabled": true,
+        "summary": "Get product by ID",
+        "description": "Retrieve detailed information about a specific product by its ID"
+      },
+      {
+        "path": "PUT /products/{productId}",
+        "enabled": true,
+        "summary": "Update product",
+        "description": "Update an existing product's information in the catalog"
+      }
+    ]
+  }
+}

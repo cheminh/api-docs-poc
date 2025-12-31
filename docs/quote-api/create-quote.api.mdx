@@ -1,0 +1,71 @@
+---
+id: create-quote
+title: "POST /quotes"
+description: "Generate a new insurance quote based on the provided parameters"
+sidebar_label: "POST /quotes"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVE1v2zAM/SsCe3Wcdkeflg7F0MvWtSkwIM2BsdlYrS0plJQ2MPzfB8pu87FiGLDl4oikyEe+R3VgHTEGbc11BQWUTBjoR7SBIIOAaw/FAtLZwzIDpk0kHy5ttYOiS0fNVEEROFIGpTWBTBAXOtfoMmWePnlrxObLmlqUf2HnCAqwqycqA2QHiRbg2FaxDNeVFHQsAIMmL9f2rn0OH1ibNfR9BkGHRkwJ7+0AFfpeXEzeWeOHNJ/OL+RTkS9ZO4H4dkkNA6jgH3o5hqw/wprBRqp9i+2K+EM/tjYOxUeXGWL7DMrITKbc/cUMUvN9dtLpVzLCOSlUhl6UNj4ympJUAqVW6KlS1qhQk3Jst7qiSjlkbCkQe8igpVBb0YuzPrWMoYYCpptBKBl44q2EFosOIjdQQB2C88V0Gli710kKnKDTueMqx2eft2hiox8pLxFOAd/P5urKbDVb0wol/VIqlJF12KUSl4RMPIuCYrE8dN8JTQMTh0HvkxNYgjeFQQGrFJQmKUzf7vV+9Yqtk9EeyfCAMm0ebco8MjBn7X6qQVazm2vIQEYydHSRn+fnv/U5r0md3FKPltV6IEybtUJTqRYNruUQGLfUnBLo8wfzYM7OlLRKJozKFeOsaVLScY29GvdO4VGoin6olYKfaZc/mHEjsEyiNNjuW5Sgu+icZdECtaiFcHR64gfr50R6Xto2DVZE06I5yHPz/W6u9uo5mkq338T/oNyR9kCvYeoa1EaYSwrtRhUvYPP+3NUi72IBXSep77npezFvIrEIb5nBFlnjSvheLPsMasJKNnrRwTPtoIAvA/bJXOpKeBMpDefkRemztxuzsiQX/hi7PNhAGR1ksBpf5NZWcofxRV5VfIECIAObZpm2INk6aNCsI64ldsgpv1+9VhzM
+sidebar_class_name: "post api-method"
+info_path: docs/quote-api/tripx-quote-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"POST /quotes"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/quotes"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generate a new insurance quote based on the provided parameters
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["productId"],"properties":{"productId":{"type":"string"}},"title":"QuoteRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Quote created","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"quoteNumber":{"type":"string"},"amount":{"type":"number"},"currency":{"type":"string"}},"title":"Quote"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

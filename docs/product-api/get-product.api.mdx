@@ -1,0 +1,71 @@
+---
+id: get-product
+title: "GET /products/{productId}"
+description: "Retrieve detailed information about a specific product by its ID"
+sidebar_label: "GET /products/{productId}"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVMFu2zAM/RWBvWyA62Q7+rQMK4rcijYFBqQ5MDKTqLVllaKDBob/faCjZGmT7rRcHJNP1iPfIztoAjGKa/y0hALWJHfclK0VyEBwHaGYQ4pEWGQQkLEmIdZMBx5rggLCHjEtIQPnNYCygQyYXlvHVEIh3FIG0W6oRig6kF3Qg1HY+TX0/ULBMTQ+UtT89/FYHyVFyy4oPygORExJgq6KkIFtvJAXhWIIlbNDKaPnqPju/L5m+UxDbYG1cHH721x5gVOWqruQeEfrQt6i0Lrh3cVkYGdPP+vbekk8HGuZydtLx/oMxElFf7sAvf4+cIF7Ena0pdQjKo3zq4broS8Gl00rBk0MZN3KWZOEM8udcRLN9BdkUJNsmmQG7ZRKWcAoQeOoO6rdQwaReHtwQ8sVFLARCbEYjYRdeLtO4GsMLg9c5vgS8xp9W7kV5RbhYwGPk5m58VvHja9VWXVGJNuyk91wyU9CJp60ymq+OE0/qNp7QU9Bx14qMUgm1PflABp6q00akKnHM3bhtzn4bXI3hQy0zD3Hb/k4H58xn23InJ0zq4ZNjR7Xzq+NMG6pMuhVltgyeksHDWL+5J/81ZVR1uQleVmDk6oavqXjRFGiSXNl8B3UtFEvQT+AX2iXP/k0I2iHGUnjumepoIc2hIZVZqrRqXoY3HXcR38MCua2qYcehSZKjf7kO7c3M/OZLz6MyHFQ/4dDk55CbzIKFTqvwzOYr0t2nR9Wki6J4u96WmSwaaIooOuWGOmRq77X8GtLOq/zRQZbZIdL9cG8g9JF/V9CscIq0j8K+3Kftt1X8xnHFES/Uz9h1eobZPBCu3dbtF/0GWwIS+KBxD4/sZaCnJw8W3k6Dcfxvb2ZQd//AQ8ECu8=
+sidebar_class_name: "get api-method"
+info_path: docs/product-api/tripx-product-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GET /products/\\{productId\\}"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/products/{productId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieve detailed information about a specific product by its ID
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"productId","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Product details","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"category":{"type":"string"},"price":{"type":"number"},"currency":{"type":"string"}},"title":"Product"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

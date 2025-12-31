@@ -1,0 +1,71 @@
+---
+id: create-product
+title: "POST /products"
+description: "Add a new insurance product to the catalog"
+sidebar_label: "POST /products"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VU1v2zAM/SsCe3WcdEeflg499LSiTYEBaQ6MzDpqbUml5LRB4P8+UHY+mgQDhgHLxQn1SD4/PipbcJ4Yo3H2roQCNBNGumdXtjpCBhGrAMUchkiARQZM7y2FeOPKDRTb9NMwlVBEbikD7WwkG+UIva+NTtXHr8FZiQW9ogblW9x4ggLc8pVSr0OhOVhsCDLQGKlyvJG2noVqNBQkOQEORUJkYyvoMigpaDZeel4835e8dOjZ6OOytm2WxNB1GUQTawkNSjz0IkDXySFT8M6Gntq3ybU8vhDZpale4BL+QaevQpjy4pv8X30y0C0zWX0p7Vy8pNopF5iWpUJl6UMZG1pGq0n5QbboVFyR0hixdhVk0FBcOXGsdyGJgnEFBYz9zqgZBOI1sdh3Cy3XUMAqRh+K8Tiy8Z+jATpCb3LPZY5vIW/QtrV5oVwjnPJ7ms7UrV0bdraRwXUL6aFbNnGTmtwQMvG0FSbzxfHxowyzn9cxaC+VEBPGCQYFLBMoSSd+eDhs3O0nNr6mwwrsZD5luw8fBnqIDXOcdBkY++ISk2FEMzb+l9rZdXp/BxmIjH3V63yST856zVakzvLUi2PVoMXK2EpFxjXVCm15Pt2QP9tne3WlRBWycVgFCU7rOtUa7pyghktC4ReoaoM0QZvAb7TJn+2wYqjjkVg9SwE9tt47FutQg0bcgd6MQh/9nhySa9ekGYjHGrRHde5/Ps7UsdlO1mq/3H/n6sEOkT7j2NdorKxW8u52cPgc/NFVvBLzF3PYbpcY6InrrpPwe0sy7/kigzWywaVMdr7oMlgRlsTJrW8klvjREx3NpLPA65aSFic3UpftMqZak49/xC6O9lOUggyWw79F40rJYfyQGx8/oADIwCXh0n6k2BZqtFWLlWD7mvL5DSWxUdM=
+sidebar_class_name: "post api-method"
+info_path: docs/product-api/tripx-product-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"POST /products"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/products"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Add a new insurance product to the catalog
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name","category"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"category":{"type":"string"},"price":{"type":"number"}},"title":"ProductRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Product created","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"category":{"type":"string"},"price":{"type":"number"},"currency":{"type":"string"}},"title":"Product"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

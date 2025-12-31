@@ -1,0 +1,4090 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/distribution/content": {
+      "post": {
+        "operationId": "DistributionController_retrieveContent",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContentPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search and return organization content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/organization_types_Organization"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/agents": {
+      "get": {
+        "description": "Search by case insensitive query parameters and return new agent information",
+        "operationId": "DistributionController_findOne",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "referenceNumber",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AgentPayloadDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieve profile for a new agent",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/agentlist": {
+      "get": {
+        "operationId": "DistributionController_retrieveAgents",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationCode",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search and return all the eligibile agents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/profile_types_Profile"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/list-organization": {
+      "get": {
+        "operationId": "DistributionController_getOrgList",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "description": "Code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationName",
+            "required": false,
+            "in": "query",
+            "description": "organizationName",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "description": "category",
+            "schema": {
+              "example": "BROKERAGE",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return list of organizations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "array"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/list-organization-reports": {
+      "post": {
+        "operationId": "DistributionController_getOrgListReports",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgSearchReportsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return list of organizations for external reports",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/findByOrgCode": {
+      "get": {
+        "operationId": "DistributionController_findByOrgCode",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationCode",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search organization via orgCode",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/updateByOrgCode": {
+      "put": {
+        "operationId": "DistributionController_updateByOrgCode",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationCode",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrganizationPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update organization via orgCode",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/advisor/lh/find": {
+      "get": {
+        "description": "Searches for an advisor first in TripX, then falls back to LH if not found.",
+        "operationId": "DistributionController_fetchAdvisorFromTripxOrLH",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "counselorId",
+            "required": true,
+            "in": "query",
+            "description": "Counselor ID",
+            "schema": {
+              "example": "ON2688",
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgCode",
+            "required": true,
+            "in": "query",
+            "description": "Organization Code",
+            "schema": {
+              "example": "CM",
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Advisor found successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvisorResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters (counselorId or orgCode missing, empty, or not a string).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "counselorId must be a string",
+                        "counselorId should not be empty",
+                        "orgCode must be a string",
+                        "orgCode should not be empty"
+                      ]
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Bad Request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Fetch advisor from TripX or LH.",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/advisor/dss/find": {
+      "get": {
+        "description": "First searches for the party ID in TripX database. If not found, falls back to DSS (Distribution Support System) to locate advisor information. Returns status indicating where the advisor was found or if not found in either system.",
+        "operationId": "DistributionController_findAdvisorInDSS",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partyId",
+            "required": true,
+            "in": "query",
+            "description": "Party ID - must be a valid positive integer within safe integer limits",
+            "schema": {
+              "example": "12345",
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgCode",
+            "required": true,
+            "in": "query",
+            "description": "Organization Code",
+            "schema": {
+              "example": "CM",
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Party ID found in TripX",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "example": "FOUND_IN_TRIPX"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters (partyId invalid or missing required fields).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "The party ID entered does not exist in DSS. Enter a valid party ID to proceed."
+                      ]
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Bad Request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Check if Party ID exists in TripX or DSS",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/advisor/tripx/find": {
+      "get": {
+        "description": "Searches for an advisor in TripX database.",
+        "operationId": "DistributionController_findAdvisorInTripx",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "counselorId",
+            "required": true,
+            "in": "query",
+            "description": "Counsellor ID",
+            "schema": {
+              "example": "ON2688",
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgCode",
+            "required": true,
+            "in": "query",
+            "description": "Organization code",
+            "schema": {
+              "example": "CM",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Advisor found successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "example": "FOUND_IN_TRIPX"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters (counselorId or orgCode missing, empty, or not a string).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "number",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "counselorId must be a string",
+                        "counselorId should not be empty",
+                        "orgCode must be a string",
+                        "orgCode should not be empty"
+                      ]
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Bad Request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Find advisor in TripX.",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/getProfileByRef": {
+      "get": {
+        "operationId": "DistributionController_getProfileByRef",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profileRef",
+            "required": true,
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "profileRef is found"
+          },
+          "400": {
+            "description": "profileRef is undefined or not a string"
+          },
+          "403": {
+            "description": "User does not have access to see agent"
+          },
+          "404": {
+            "description": "profile is not found"
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/org/{orgCode}/license/{id}": {
+      "get": {
+        "description": "Find Profile by profileref and then find license by licenseId in a profile",
+        "operationId": "DistributionController_findOrganizationLicense",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgCode",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchOrganizationWithLicenseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Search License in organization by orgCode and licenseId",
+        "tags": [
+          "distribution"
+        ]
+      },
+      "put": {
+        "description": "Find License by Organization Id and update license by licenseId in a organization",
+        "operationId": "DistributionController_updateLicense",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgCode",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLicenseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "License has been updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Update License in Organization by licenseId",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/profile/{profileRef}/license/{id}": {
+      "get": {
+        "description": "Find Profile by profileref and then find license by licenseId in a profile",
+        "operationId": "DistributionController_findProfileLicense",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profileRef",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchProfileWithLicenseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Search License in profiles by profileRef and licenseId",
+        "tags": [
+          "distribution"
+        ]
+      },
+      "put": {
+        "description": "Find Profile by profileref and update license by licenseId in a profile",
+        "operationId": "DistributionController_updateLicenseByLicenseId",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profileRef",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLicenseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/profile_types_Profile"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Update License in profiles by licenseId",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/createProfile": {
+      "post": {
+        "operationId": "DistributionController_createProfile",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProfilePayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search and return organization content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/profile_types_Profile"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/advisor": {
+      "post": {
+        "operationId": "DistributionController_createAdvisor",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdvisorProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create an Advisor profile"
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/agent/license": {
+      "post": {
+        "description": "Find Profile by profileref and create license with given license details",
+        "operationId": "DistributionController_addLicenseToProfile",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LicenseCreatePayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/profile_types_Profile"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create license in profiles with unique licenseId",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/licenses/search": {
+      "post": {
+        "description": "Retrieve and return a license with given license details",
+        "operationId": "DistributionController_searchLicense",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortField",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "lang",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "en",
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": 0,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": 10,
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LicenseSearchPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LicenseSearchResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Search licenses with payload in requested body",
+        "tags": [
+          "distribution",
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/licenses/export": {
+      "post": {
+        "description": "Retrieve and return a license search result csv file with given license details",
+        "operationId": "DistributionController_exportLicense",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortField",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LicenseSearchPayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "export licenses search result by the payload in requested body",
+        "tags": [
+          "distribution",
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/updateProfile": {
+      "put": {
+        "operationId": "DistributionController_updateProfile",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profileRef",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfilePayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update profile by profileRef",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/profile_types_Profile"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/updateProfileByCiamId": {
+      "put": {
+        "operationId": "DistributionController_updateProfileByCiamId",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Update profile by ciamId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/profile_types_Profile"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/activateProfile": {
+      "patch": {
+        "operationId": "DistributionController_activateProfile",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search and update profile documents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/agency/license": {
+      "post": {
+        "description": "Create Agency license with given license details",
+        "operationId": "DistributionController_addLicenseToOrganization",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationLicenseCreatePayloadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationLicenseCreatePayloadDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create license in organization with unique licenseId",
+        "tags": [
+          "distribution",
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/getAgencyHierarchy": {
+      "get": {
+        "operationId": "DistributionController_retrieveOrgHierarchy",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return organization Hierarchy from Top to Down"
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/getRoles": {
+      "get": {
+        "description": "Return roles from roledocuments",
+        "operationId": "DistributionController_getRoles",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "Internal",
+                "Service",
+                "Agency",
+                "Advisor",
+                "ALL"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Role"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Return roles from roledocuments",
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/distribution/agent/search": {
+      "get": {
+        "operationId": "DistributionController_getAgents",
+        "parameters": [
+          {
+            "name": "x-user-type",
+            "in": "header",
+            "description": "User type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "lanid",
+                "ciamid",
+                "apiUser",
+                "apim",
+                "apiWeblink",
+                "mockApiToken"
+              ]
+            }
+          },
+          {
+            "name": "x-trip-auth",
+            "in": "header",
+            "description": "Access Token",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-ref",
+            "in": "header",
+            "description": "User reference to authorization system: UUID (v4)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "firstName",
+            "required": false,
+            "in": "query",
+            "description": "First Name",
+            "schema": {
+              "example": "John",
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "required": false,
+            "in": "query",
+            "description": "Last Name",
+            "schema": {
+              "example": "Doe",
+              "type": "string"
+            }
+          },
+          {
+            "name": "organization",
+            "required": false,
+            "in": "query",
+            "description": "Organization",
+            "schema": {
+              "example": "TC",
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "required": false,
+            "in": "query",
+            "description": "Email",
+            "schema": {
+              "example": "johndoe@manulife.ca",
+              "type": "string"
+            }
+          },
+          {
+            "name": "profileCode",
+            "required": false,
+            "in": "query",
+            "description": "Agent ID (external id)",
+            "schema": {
+              "example": "123456",
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "Status of the agent",
+            "schema": {
+              "example": "ACTIVE",
+              "type": "string",
+              "enum": [
+                "NEW",
+                "ACTIVE",
+                "INACTIVE"
+              ]
+            }
+          },
+          {
+            "name": "title",
+            "required": false,
+            "in": "query",
+            "description": "Title of the agent",
+            "schema": {
+              "example": "Accounting Contact",
+              "type": "string",
+              "enum": [
+                "Owner/President",
+                "Manager/Regional Manager",
+                "Accounting Contact",
+                "Travel Agent",
+                "Travel Agent Lite",
+                "Independent Contractor",
+                "Not Applicable"
+              ]
+            }
+          },
+          {
+            "name": "role",
+            "required": false,
+            "in": "query",
+            "description": "Role of the agent",
+            "schema": {
+              "example": "Administrator_Full",
+              "type": "string",
+              "enum": [
+                "Consultant_Agency",
+                "Consultant_Own",
+                "Administrator_Full",
+                "Administrator_Lite",
+                "Administrator_User",
+                "View_Only",
+                "Reports_Only"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Number of search results per page",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Pagination",
+            "schema": {
+              "default": 0,
+              "example": 0,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortField",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search and return agents in current user's organization hierarchy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "array"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "distribution"
+        ]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "HealthController_getHealth",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Health Check Endpoint"
+          }
+        },
+        "tags": [
+          "health"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Distribution",
+    "description": "Travel Insurance Distribution API",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "distribution",
+      "description": ""
+    }
+  ],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "ContentPayloadDto": {
+        "type": "object",
+        "properties": {
+          "organizationCode": {
+            "type": "string",
+            "example": "Org1",
+            "description": "Organization Code"
+          },
+          "salesChannel": {
+            "type": "string",
+            "example": "Org1-Agent1",
+            "description": "sales channel"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "EN",
+              "FR"
+            ],
+            "description": "Language"
+          }
+        },
+        "required": [
+          "organizationCode",
+          "salesChannel",
+          "lang"
+        ]
+      },
+      "organization_types_Organization": {
+        "type": "object",
+        "properties": {}
+      },
+      "AgentPayloadDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "John",
+            "description": "First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe",
+            "description": "Last Name"
+          },
+          "phone": {
+            "type": "string",
+            "example": "111-222-3333",
+            "description": "Phone Number"
+          },
+          "email": {
+            "type": "string",
+            "example": "john_doe@manulife.ca",
+            "description": "Email"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "EN",
+              "FR"
+            ]
+          },
+          "country": {
+            "type": "string",
+            "enum": [
+              "CA"
+            ]
+          },
+          "province": {
+            "type": "string",
+            "enum": [
+              "ON",
+              "QC",
+              "NS",
+              "NB",
+              "MB",
+              "BC",
+              "PE",
+              "SK",
+              "AB",
+              "NL",
+              "YT",
+              "NT",
+              "NU"
+            ]
+          },
+          "postalCode": {
+            "type": "string",
+            "example": "1W1 2W2",
+            "description": "Postal Code"
+          },
+          "addressLine1": {
+            "type": "string",
+            "example": "123 Street",
+            "description": "Address 1"
+          },
+          "addressLine2": {
+            "type": "string",
+            "example": "1W1 2W2",
+            "description": "Address 2"
+          },
+          "city": {
+            "type": "string",
+            "example": "123 Street",
+            "description": "City"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "phone",
+          "email",
+          "language",
+          "country",
+          "province",
+          "postalCode",
+          "addressLine1",
+          "city"
+        ]
+      },
+      "profile_types_Profile": {
+        "type": "object",
+        "properties": {}
+      },
+      "OrgSearchReportsDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "TC",
+            "description": "org code"
+          },
+          "category": {
+            "type": "string",
+            "example": "AGENCY",
+            "description": "org category"
+          }
+        },
+        "required": [
+          "code",
+          "category"
+        ]
+      },
+      "UpdateOrganizationPayloadDto": {
+        "type": "object",
+        "properties": {
+          "businessType": {
+            "type": "string",
+            "example": "AGENCY",
+            "description": "Business Type"
+          },
+          "organizationName": {
+            "type": "string",
+            "example": "Coverme",
+            "description": "Organization Name"
+          },
+          "organizationNameInFrench": {
+            "type": "string",
+            "example": "CovermeFR",
+            "description": "Organization Name In FR"
+          },
+          "status": {
+            "type": "string",
+            "example": "ACTIVE",
+            "description": "Status",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "CLOSED",
+              "PROSPECT",
+              "SUSPENDED"
+            ]
+          },
+          "paymentGateway": {
+            "type": "string",
+            "example": [
+              "MONERIS"
+            ],
+            "enum": [
+              "MONERIS",
+              "ORGANIZATION"
+            ]
+          },
+          "rootOrganizationCode": {
+            "type": "string",
+            "example": "CM",
+            "description": "RootOrganizationCode"
+          },
+          "parentOrganizationCode": {
+            "type": "string",
+            "example": "CM",
+            "description": "ParentOrganizationCode"
+          },
+          "affiliationCode": {
+            "type": "string",
+            "example": "WJET",
+            "description": "AffiliationCode"
+          },
+          "policyPrefix": {
+            "type": "string",
+            "example": "CMX",
+            "description": "PolicyPrefix"
+          },
+          "defaultServiceAccount": {
+            "type": "string",
+            "example": "John",
+            "description": "First Name"
+          },
+          "BDM": {
+            "type": "string",
+            "example": "John",
+            "description": "BDM"
+          },
+          "updatedBy": {
+            "type": "string",
+            "example": "John Doe",
+            "description": "Updated By"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-01-01T00:00:00.000Z",
+            "description": "Updated At"
+          },
+          "changeHistory": {
+            "example": "[{}]",
+            "description": "ChangeHistory",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contract": {
+            "example": "[{}]",
+            "description": "Contract",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contacts": {
+            "example": "[{}]",
+            "description": "Contacts",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "organizationName",
+          "organizationNameInFrench",
+          "status",
+          "paymentGateway",
+          "rootOrganizationCode",
+          "parentOrganizationCode",
+          "affiliationCode",
+          "policyPrefix",
+          "defaultServiceAccount",
+          "BDM",
+          "updatedBy",
+          "updatedAt",
+          "changeHistory",
+          "contract",
+          "contacts"
+        ]
+      },
+      "AdvisorDetailsDto": {
+        "type": "object",
+        "properties": {
+          "CounselorID": {
+            "type": "string",
+            "example": "ON2688",
+            "description": "Counselor ID"
+          },
+          "Language": {
+            "type": "string",
+            "example": "EN",
+            "description": "Language code",
+            "enum": [
+              "EN",
+              "FR"
+            ]
+          },
+          "LastName": {
+            "type": "string",
+            "example": "Smith",
+            "description": "Last name of the advisor"
+          },
+          "FirstName": {
+            "type": "string",
+            "example": "John",
+            "description": "First name of the advisor"
+          },
+          "AddressLine1": {
+            "type": "string",
+            "example": "ATT SANDRINE DORGERVILLE",
+            "description": "Address line 1"
+          },
+          "AddressLine2": {
+            "type": "string",
+            "example": "3448 STANLEY",
+            "description": "Address line 2"
+          },
+          "AddressLine3": {
+            "type": "string",
+            "example": "MONTREAL, QC",
+            "description": "Address line 3"
+          },
+          "AddressLine4": {
+            "type": "string",
+            "example": "",
+            "description": "Address line 4"
+          },
+          "PostalCode": {
+            "type": "string",
+            "example": "H3A1R8",
+            "description": "Postal code"
+          },
+          "PhoneNumber": {
+            "type": "string",
+            "example": "5243157337",
+            "description": "Phone number"
+          },
+          "Cellular": {
+            "type": "string",
+            "example": "5143234567",
+            "description": "Cellular phone number"
+          },
+          "Status": {
+            "type": "string",
+            "example": "ACTIVE",
+            "description": "Status of the advisor"
+          },
+          "Agreement2StartDate": {
+            "type": "string",
+            "example": "2009-11-01T00:00:00.000Z",
+            "description": "Agreement 2 start date"
+          },
+          "Agreement2EndDate": {
+            "type": "string",
+            "example": "1899-12-31T00:00:00.000Z",
+            "description": "Agreement 2 end date"
+          },
+          "Email": {
+            "type": "string",
+            "example": "DVANASSE@GMAIL.CA",
+            "description": "Email address"
+          },
+          "OrganizationCode": {
+            "type": "string",
+            "example": "ORG001",
+            "description": "Organization code",
+            "nullable": true
+          },
+          "MGACode": {
+            "type": "string",
+            "example": "OMTA01",
+            "description": "MGA code"
+          },
+          "City": {
+            "type": "string",
+            "example": "MONTREAL",
+            "description": "City"
+          },
+          "Province": {
+            "type": "string",
+            "example": "QC",
+            "description": "Province"
+          }
+        },
+        "required": [
+          "CounselorID",
+          "Language",
+          "LastName",
+          "FirstName",
+          "AddressLine1",
+          "AddressLine2",
+          "AddressLine3",
+          "AddressLine4",
+          "PostalCode",
+          "PhoneNumber",
+          "Cellular",
+          "Status",
+          "Agreement2StartDate",
+          "Agreement2EndDate",
+          "Email",
+          "OrganizationCode",
+          "MGACode",
+          "City",
+          "Province"
+        ]
+      },
+      "AdvisorResponseDto": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "example": "LH",
+            "description": "Source system where advisor was found",
+            "enum": [
+              "TRIPX",
+              "LH"
+            ]
+          },
+          "data": {
+            "description": "Advisor data from the source system",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AdvisorDetailsDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "source",
+          "data"
+        ]
+      },
+      "SearchObjectLicenseDto": {
+        "type": "object",
+        "properties": {
+          "licensedProvince": {
+            "type": "string",
+            "example": "BC"
+          },
+          "licenseNumber": {
+            "type": "string",
+            "example": "ON989233"
+          },
+          "status": {
+            "type": "string",
+            "example": "AUTHORIZED"
+          },
+          "effectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-08-01T00:00:00.000+00:00"
+          },
+          "expiredDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-02-01T00:00:00.000+00:00"
+          },
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "screeningStatus": {
+            "type": "string",
+            "example": "NA"
+          },
+          "legalName": {
+            "type": "string",
+            "example": "Legal1"
+          },
+          "screeningEffectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-04-01T00:00:00.000+00:00"
+          }
+        },
+        "required": [
+          "licensedProvince",
+          "licenseNumber",
+          "status",
+          "effectiveDate",
+          "expiredDate",
+          "id",
+          "screeningStatus",
+          "legalName",
+          "screeningEffectiveDate"
+        ]
+      },
+      "SearchOrganizationWithLicenseDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "code"
+          },
+          "organizationName": {
+            "type": "string",
+            "example": "organizationName"
+          },
+          "email": {
+            "type": "string",
+            "example": "abc@xyz.com"
+          },
+          "license": {
+            "$ref": "#/components/schemas/SearchObjectLicenseDto"
+          }
+        },
+        "required": [
+          "code",
+          "organizationName",
+          "email",
+          "license"
+        ]
+      },
+      "SearchProfileWithLicenseDto": {
+        "type": "object",
+        "properties": {
+          "employmentType": {
+            "type": "string",
+            "example": "employment_Type"
+          },
+          "title": {
+            "type": "string",
+            "example": "title"
+          },
+          "role": {
+            "type": "string",
+            "example": "role"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "firstName"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "lastName"
+          },
+          "language": {
+            "type": "string",
+            "example": "language"
+          },
+          "city": {
+            "type": "string",
+            "example": "city"
+          },
+          "province": {
+            "type": "string",
+            "example": "province"
+          },
+          "country": {
+            "type": "string",
+            "example": "country"
+          },
+          "email": {
+            "type": "string",
+            "example": "email"
+          },
+          "license": {
+            "$ref": "#/components/schemas/SearchObjectLicenseDto"
+          }
+        },
+        "required": [
+          "employmentType",
+          "title",
+          "role",
+          "firstName",
+          "lastName",
+          "language",
+          "city",
+          "province",
+          "country",
+          "email",
+          "license"
+        ]
+      },
+      "CreateProfilePayloadDto": {
+        "type": "object",
+        "properties": {
+          "profileRef": {
+            "type": "string",
+            "example": "jdoe123",
+            "description": "Profile Ref"
+          },
+          "role": {
+            "type": "string",
+            "example": "Consultant_Own",
+            "description": "User group role"
+          },
+          "status": {
+            "type": "string",
+            "example": "NEW",
+            "description": "Status",
+            "enum": [
+              "NEW",
+              "ACTIVE",
+              "INACTIVE"
+            ]
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Vikki",
+            "description": "First name"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Test",
+            "description": "Last name"
+          },
+          "language": {
+            "type": "string",
+            "example": "EN",
+            "description": "Language preference",
+            "enum": [
+              "EN",
+              "FR"
+            ]
+          },
+          "city": {
+            "type": "string",
+            "example": "Toronto",
+            "description": "City"
+          },
+          "province": {
+            "type": "string",
+            "example": "ON",
+            "description": "Province",
+            "enum": [
+              "ON",
+              "QC",
+              "NS",
+              "NB",
+              "MB",
+              "BC",
+              "PE",
+              "SK",
+              "AB",
+              "NL",
+              "YT",
+              "NT",
+              "NU"
+            ]
+          },
+          "country": {
+            "type": "string",
+            "example": "CA",
+            "description": "Country"
+          },
+          "email": {
+            "type": "string",
+            "example": "minhong_chen@manulife.ca",
+            "description": "Email address"
+          },
+          "salesChannel": {
+            "type": "string",
+            "example": "B2B",
+            "description": "Sales Channel",
+            "enum": [
+              "B2B",
+              "B2C",
+              "B2B_API",
+              "B2C_API"
+            ]
+          },
+          "authType": {
+            "type": "string",
+            "example": "CIAM",
+            "enum": [
+              "CIAM",
+              "APIGEE",
+              "LANID",
+              "SYSTEM",
+              "APIM",
+              null,
+              "NULL"
+            ],
+            "description": "Authentication Type"
+          },
+          "authID": {
+            "type": "string",
+            "example": "jdoe",
+            "description": "Authentication ID"
+          },
+          "apID": {
+            "type": "string",
+            "example": "AP11223",
+            "description": "Advisor Portal ID"
+          },
+          "sellerCode": {
+            "type": "string",
+            "example": "TC01",
+            "description": "Seller Code"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-01-01T00:00:00.000Z",
+            "description": "Created At"
+          },
+          "addressLine1": {
+            "type": "string",
+            "example": "123 Main Street",
+            "description": "Address line 1"
+          },
+          "addressLine2": {
+            "type": "string",
+            "example": "Suite 456",
+            "description": "Address line 2"
+          },
+          "postalCode": {
+            "type": "string",
+            "example": "1W1 2W2",
+            "description": "Postal Code"
+          },
+          "agencyLicenseAllowList": {
+            "example": "[]",
+            "description": "Agency License Allow List",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "profileType": {
+            "type": "string",
+            "example": "ADMIN",
+            "description": "Profile Type",
+            "enum": [
+              "AGENT",
+              "ADVISOR",
+              "LIA",
+              "SERVICE",
+              "INTERNAL",
+              "ADVISOR_UNLICENSED"
+            ]
+          },
+          "employmentType": {
+            "type": "string",
+            "example": "FULL_TIME",
+            "description": "Employment Type",
+            "enum": [
+              "LIA",
+              "REGULAR",
+              "INDCONTRACTOR",
+              "NOT_APPLICABLE",
+              "CONTRACTOR"
+            ]
+          },
+          "organizations": {
+            "description": "Organizations",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "phone": {
+            "type": "string",
+            "example": "905-222-3333",
+            "description": "Phone Number"
+          },
+          "commission": {
+            "type": "object",
+            "example": "{}",
+            "description": "Commission"
+          },
+          "licenses": {
+            "example": "[{}]",
+            "description": "Licenses",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "updatedBy": {
+            "type": "string",
+            "example": "John Doe",
+            "description": "Updated By"
+          },
+          "referenceNumber": {
+            "type": "string",
+            "example": "88099f020c",
+            "description": "Reference number"
+          },
+          "profileCode": {
+            "type": "string",
+            "example": "jdoe",
+            "description": "Profile Code"
+          },
+          "title": {
+            "type": "string",
+            "example": "Independent Contractor",
+            "enum": [
+              "Owner/President",
+              "Manager/Regional Manager",
+              "Accounting Contact",
+              "Travel Agent",
+              "Travel Agent Lite",
+              "Independent Contractor",
+              "Not Applicable"
+            ],
+            "description": "Title"
+          },
+          "dob": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2020-01-01T00:00:00.000Z",
+            "description": "Date of Birth"
+          },
+          "createdBy": {
+            "type": "string",
+            "example": "cheminh_ciam",
+            "description": "Created by user"
+          }
+        },
+        "required": [
+          "profileRef",
+          "role",
+          "status",
+          "firstName",
+          "lastName",
+          "language",
+          "city",
+          "province",
+          "country",
+          "email",
+          "salesChannel",
+          "authType",
+          "authID",
+          "apID",
+          "sellerCode",
+          "createdAt",
+          "addressLine1",
+          "postalCode",
+          "agencyLicenseAllowList",
+          "profileType",
+          "employmentType",
+          "organizations",
+          "phone",
+          "commission",
+          "licenses",
+          "updatedBy",
+          "referenceNumber",
+          "profileCode",
+          "title",
+          "dob",
+          "createdBy"
+        ]
+      },
+      "OrganizationAssignmentDto": {
+        "type": "object",
+        "properties": {
+          "organizationCode": {
+            "type": "string",
+            "example": "HVTTOR",
+            "description": "Organization code"
+          },
+          "default": {
+            "type": "boolean",
+            "example": true,
+            "description": "Is this the default organization"
+          },
+          "salesEnabled": {
+            "type": "boolean",
+            "example": true,
+            "description": "Organization is sales enabled"
+          },
+          "partyId": {
+            "type": "string",
+            "example": "1234",
+            "description": "Id for DSS Advisors"
+          },
+          "counselorCode": {
+            "type": "string",
+            "example": "ON1111",
+            "description": "Counselor code for non DSS"
+          }
+        },
+        "required": [
+          "organizationCode",
+          "default",
+          "salesEnabled",
+          "partyId",
+          "counselorCode"
+        ]
+      },
+      "CreateAdvisorProfileDto": {
+        "type": "object",
+        "properties": {
+          "profileRef": {
+            "type": "string",
+            "example": "jdoe123",
+            "description": "Profile Ref"
+          },
+          "role": {
+            "type": "string",
+            "example": "Advisor_MA",
+            "description": "User group role",
+            "enum": [
+              "Advisor_Own",
+              "Affinity_MGA_Owner",
+              "Advisor_MGA_Admin",
+              "Advisor_Admin",
+              "Advisor_MA"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "example": "NEW",
+            "description": "Status",
+            "enum": [
+              "NEW",
+              "ACTIVE",
+              "INACTIVE"
+            ]
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Vikki",
+            "description": "First name"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Test",
+            "description": "Last name"
+          },
+          "language": {
+            "type": "string",
+            "example": "EN",
+            "description": "Language preference",
+            "enum": [
+              "EN",
+              "FR"
+            ]
+          },
+          "city": {
+            "type": "string",
+            "example": "Toronto",
+            "description": "City"
+          },
+          "province": {
+            "type": "string",
+            "example": "ON",
+            "description": "Province",
+            "enum": [
+              "ON",
+              "QC",
+              "NS",
+              "NB",
+              "MB",
+              "BC",
+              "PE",
+              "SK",
+              "AB",
+              "NL",
+              "YT",
+              "NT",
+              "NU"
+            ]
+          },
+          "country": {
+            "type": "string",
+            "example": "CA",
+            "description": "Country"
+          },
+          "email": {
+            "type": "string",
+            "example": "minhong_chen@manulife.ca",
+            "description": "Email address"
+          },
+          "salesChannel": {
+            "type": "string",
+            "example": "B2B",
+            "description": "Sales Channel",
+            "enum": [
+              "B2B",
+              "B2C",
+              "B2B_API",
+              "B2C_API"
+            ]
+          },
+          "authType": {
+            "type": "string",
+            "example": "CIAM",
+            "enum": [
+              "CIAM",
+              "APIGEE",
+              "LANID",
+              "SYSTEM",
+              "APIM",
+              null,
+              "NULL"
+            ],
+            "description": "Authentication Type"
+          },
+          "authID": {
+            "type": "string",
+            "example": "jdoe",
+            "description": "Authentication ID"
+          },
+          "apID": {
+            "type": "string",
+            "example": "AP11223",
+            "description": "Advisor Portal ID"
+          },
+          "sellerCode": {
+            "type": "string",
+            "example": "TC01",
+            "description": "Seller Code"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-01-01T00:00:00.000Z",
+            "description": "Created At"
+          },
+          "addressLine1": {
+            "type": "string",
+            "example": "123 Main Street",
+            "description": "Address line 1"
+          },
+          "addressLine2": {
+            "type": "string",
+            "example": "Suite 456",
+            "description": "Address line 2"
+          },
+          "postalCode": {
+            "type": "string",
+            "example": "M5V3A8",
+            "description": "Postal code"
+          },
+          "agencyLicenseAllowList": {
+            "example": "[]",
+            "description": "Agency License Allow List",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "referenceNumber": {
+            "type": "string",
+            "example": "88099f020c",
+            "description": "Reference number"
+          },
+          "profileCode": {
+            "type": "string",
+            "example": "ON1234",
+            "description": "Profile code"
+          },
+          "organizations": {
+            "description": "Organization assignments",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationAssignmentDto"
+            }
+          },
+          "profileType": {
+            "type": "string",
+            "example": "ADVISOR",
+            "description": "Profile type",
+            "enum": [
+              "AGENT",
+              "ADVISOR",
+              "LIA",
+              "SERVICE",
+              "INTERNAL",
+              "ADVISOR_UNLICENSED"
+            ],
+            "readOnly": true
+          },
+          "employmentType": {
+            "type": "string",
+            "example": "REGULAR",
+            "description": "Employment type",
+            "enum": [
+              "LIA",
+              "REGULAR",
+              "INDCONTRACTOR",
+              "NOT_APPLICABLE",
+              "CONTRACTOR"
+            ],
+            "default": "REGULAR"
+          },
+          "phone": {
+            "type": "string",
+            "example": "4165550123",
+            "description": "Phone number"
+          },
+          "title": {
+            "type": "string",
+            "example": "Independent Contractor",
+            "enum": [
+              "Owner/President",
+              "Manager/Regional Manager",
+              "Accounting Contact",
+              "Travel Agent",
+              "Travel Agent Lite",
+              "Independent Contractor",
+              "Not Applicable"
+            ],
+            "description": "Title"
+          },
+          "additionalEmailRecipients": {
+            "example": [
+              "cc1@example.com",
+              "cc2@example.com"
+            ],
+            "description": "Additional email recipients for welcome email",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdBy": {
+            "type": "string",
+            "example": "cheminh_ciam",
+            "description": "Created by user"
+          }
+        },
+        "required": [
+          "profileRef",
+          "role",
+          "status",
+          "firstName",
+          "lastName",
+          "language",
+          "city",
+          "province",
+          "country",
+          "email",
+          "salesChannel",
+          "authType",
+          "authID",
+          "apID",
+          "sellerCode",
+          "createdAt",
+          "addressLine1",
+          "postalCode",
+          "agencyLicenseAllowList",
+          "referenceNumber",
+          "profileCode",
+          "organizations",
+          "profileType",
+          "employmentType",
+          "phone",
+          "title",
+          "createdBy"
+        ]
+      },
+      "LicenseCreateDetailDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 123
+          },
+          "licensedProvince": {
+            "type": "object",
+            "example": "ON"
+          },
+          "legalName": {
+            "type": "string",
+            "example": "Legal1"
+          },
+          "licenseNumber": {
+            "type": "string",
+            "example": "ON989233"
+          },
+          "status": {
+            "type": "object",
+            "example": "AUTHORIZED"
+          },
+          "screeningStatus": {
+            "type": "object",
+            "example": "APPROVED"
+          },
+          "effectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-08-01T00:00:00.000Z"
+          },
+          "expiredDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-02-01T00:00:00.000Z"
+          },
+          "screeningEffectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-04-01T00:00:00.000Z"
+          }
+        },
+        "required": [
+          "id",
+          "licensedProvince",
+          "legalName",
+          "licenseNumber",
+          "status",
+          "screeningStatus",
+          "effectiveDate",
+          "expiredDate",
+          "screeningEffectiveDate"
+        ]
+      },
+      "LicenseCreatePayloadDto": {
+        "type": "object",
+        "properties": {
+          "profileRef": {
+            "type": "string",
+            "example": "profile_ref"
+          },
+          "license": {
+            "description": "Licenses",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LicenseCreateDetailDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "profileRef",
+          "license"
+        ]
+      },
+      "LicenseSearchPayloadDto": {
+        "type": "object",
+        "properties": {
+          "organizationName": {
+            "type": "string",
+            "example": "Org1"
+          },
+          "branchCode": {
+            "type": "string",
+            "example": "Branch1"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "profileCode": {
+            "type": "string",
+            "example": "profileCode"
+          },
+          "id": {
+            "type": "number"
+          },
+          "licensedProvince": {
+            "type": "object",
+            "example": "ON"
+          },
+          "legalName": {
+            "type": "string",
+            "example": "Legal1"
+          },
+          "licenseNumber": {
+            "type": "string",
+            "example": "ON989233"
+          },
+          "status": {
+            "type": "object",
+            "example": "AUTHORIZED"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "example": false,
+            "default": false
+          },
+          "screeningStatus": {
+            "type": "object",
+            "example": "APPROVED"
+          },
+          "expiredDateStart": {
+            "type": "string",
+            "example": "2022-01-01T00:00:00.000Z"
+          },
+          "expiredDateEnd": {
+            "type": "string",
+            "example": "2026-01-01T00:00:00.000Z"
+          }
+        }
+      },
+      "LicenseResponseDto": {
+        "type": "object",
+        "properties": {
+          "organizationName": {
+            "type": "string",
+            "example": "Org1"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "profileRef": {
+            "type": "string",
+            "example": "profileRef"
+          },
+          "licensedProvince": {
+            "type": "object",
+            "example": "ON"
+          },
+          "licenseNumber": {
+            "type": "string",
+            "example": "ON989233"
+          },
+          "status": {
+            "type": "object",
+            "example": "AUTHORIZED"
+          },
+          "effectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-06-01T00:00:00.000Z"
+          },
+          "expiredDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2023-01-01T00:00:00.000Z"
+          },
+          "licenseType": {
+            "type": "object",
+            "example": "AGENT"
+          },
+          "BDM": {
+            "type": "string",
+            "example": "Business"
+          },
+          "affiliationCode": {
+            "type": "string",
+            "example": "affiliationCode"
+          },
+          "licensingEmail": {
+            "type": "string",
+            "example": "test_me@manulife.ca"
+          },
+          "name": {
+            "type": "string",
+            "example": "firstName lastName"
+          }
+        }
+      },
+      "LicenseSearchResponseDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "number",
+            "example": 100
+          },
+          "licenses": {
+            "description": "Licenses",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LicenseResponseDto"
+            }
+          }
+        },
+        "required": [
+          "totalCount",
+          "licenses"
+        ]
+      },
+      "UpdateProfilePayloadDto": {
+        "type": "object",
+        "properties": {
+          "profileRef": {
+            "type": "string",
+            "example": "jdoe123",
+            "description": "Profile Ref"
+          },
+          "role": {
+            "type": "string",
+            "example": "Test_role",
+            "description": "Role"
+          },
+          "status": {
+            "type": "string",
+            "example": "NEW",
+            "description": "Status",
+            "enum": [
+              "NEW",
+              "ACTIVE",
+              "INACTIVE"
+            ]
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John",
+            "description": "First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe",
+            "description": "Last Name"
+          },
+          "language": {
+            "type": "string",
+            "example": "EN",
+            "description": "Language",
+            "enum": [
+              "EN",
+              "FR"
+            ]
+          },
+          "city": {
+            "type": "string",
+            "example": "Toronto",
+            "description": "City"
+          },
+          "province": {
+            "type": "string",
+            "example": "ON",
+            "description": "Province",
+            "enum": [
+              "ON",
+              "QC",
+              "NS",
+              "NB",
+              "MB",
+              "BC",
+              "PE",
+              "SK",
+              "AB",
+              "NL",
+              "YT",
+              "NT",
+              "NU"
+            ]
+          },
+          "country": {
+            "type": "string",
+            "example": "CA",
+            "description": "Country",
+            "enum": [
+              "CA"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "example": "john_doe@manulife.ca",
+            "description": "Email"
+          },
+          "salesChannel": {
+            "type": "string",
+            "example": "B2B",
+            "description": "Sales Channel",
+            "enum": [
+              "B2B",
+              "B2C",
+              "B2B_API",
+              "B2C_API"
+            ]
+          },
+          "authType": {
+            "type": "string",
+            "example": "CIAM",
+            "enum": [
+              "CIAM",
+              "APIGEE",
+              "LANID",
+              "SYSTEM",
+              "APIM",
+              null,
+              "NULL"
+            ],
+            "description": "Authentication Type"
+          },
+          "authID": {
+            "type": "string",
+            "example": "jdoe",
+            "description": "Authentication ID"
+          },
+          "apID": {
+            "type": "string",
+            "example": "AP11223",
+            "description": "Advisor Portal ID"
+          },
+          "sellerCode": {
+            "type": "string",
+            "example": "TC01",
+            "description": "Seller Code"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-01-01T00:00:00.000Z",
+            "description": "Created At"
+          },
+          "addressLine1": {
+            "type": "string",
+            "example": "123 Main Street",
+            "description": "Address line 1"
+          },
+          "addressLine2": {
+            "type": "string",
+            "example": "Suite 456",
+            "description": "Address line 2"
+          },
+          "postalCode": {
+            "type": "string",
+            "example": "1W1 2W2",
+            "description": "Postal Code"
+          },
+          "agencyLicenseAllowList": {
+            "example": "[]",
+            "description": "Agency License Allow List",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "profileType": {
+            "type": "string",
+            "example": "ADMIN",
+            "description": "Profile Type",
+            "enum": [
+              "AGENT",
+              "ADVISOR",
+              "LIA",
+              "SERVICE",
+              "INTERNAL",
+              "ADVISOR_UNLICENSED"
+            ]
+          },
+          "employmentType": {
+            "type": "string",
+            "example": "FULL_TIME",
+            "description": "Employment Type",
+            "enum": [
+              "LIA",
+              "REGULAR",
+              "INDCONTRACTOR",
+              "NOT_APPLICABLE",
+              "CONTRACTOR"
+            ]
+          },
+          "organizations": {
+            "description": "Organizations",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "phone": {
+            "type": "string",
+            "example": "905-222-3333",
+            "description": "Phone Number"
+          },
+          "commission": {
+            "type": "object",
+            "example": "{}",
+            "description": "Commission"
+          },
+          "licenses": {
+            "example": "[{}]",
+            "description": "Licenses",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "updatedBy": {
+            "type": "string",
+            "example": "John Doe",
+            "description": "Updated By"
+          },
+          "profileCode": {
+            "type": "string",
+            "example": "jdoe",
+            "description": "Profile Code"
+          },
+          "title": {
+            "type": "string",
+            "example": "Independent Contractor",
+            "enum": [
+              "Owner/President",
+              "Manager/Regional Manager",
+              "Accounting Contact",
+              "Travel Agent",
+              "Travel Agent Lite",
+              "Independent Contractor",
+              "Not Applicable"
+            ],
+            "description": "Title"
+          },
+          "legalEntity": {
+            "type": "object",
+            "example": "{}",
+            "description": "Legal Profile Entity"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-01-01T00:00:00.000Z",
+            "description": "Updated At"
+          }
+        },
+        "required": [
+          "profileRef",
+          "role",
+          "status",
+          "firstName",
+          "lastName",
+          "language",
+          "city",
+          "province",
+          "country",
+          "email",
+          "salesChannel",
+          "authType",
+          "authID",
+          "apID",
+          "sellerCode",
+          "createdAt",
+          "addressLine1",
+          "postalCode",
+          "agencyLicenseAllowList",
+          "profileType",
+          "employmentType",
+          "organizations",
+          "phone",
+          "commission",
+          "licenses",
+          "updatedBy",
+          "title",
+          "legalEntity",
+          "updatedAt"
+        ]
+      },
+      "UpdateProfileDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "abc",
+            "description": "First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "xyz",
+            "description": "Last Name"
+          },
+          "phone": {
+            "type": "string",
+            "example": "5668999900",
+            "description": "Phone Number"
+          },
+          "authID": {
+            "type": "string",
+            "example": "88d3c9d3-c6a4-44c1-8a07-b478aaa68628",
+            "description": "authID"
+          },
+          "addressLine1": {
+            "type": "string",
+            "example": "208",
+            "description": "Address1"
+          },
+          "addressLine2": {
+            "type": "string",
+            "example": "Street",
+            "description": "Address2"
+          },
+          "city": {
+            "type": "string",
+            "example": "Toronto",
+            "description": "City"
+          },
+          "postalCode": {
+            "type": "string",
+            "example": "M6J 7H8",
+            "description": "PostalCode"
+          },
+          "province": {
+            "type": "string",
+            "example": "ON",
+            "description": "Province"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "phone",
+          "authID",
+          "addressLine1",
+          "addressLine2",
+          "city",
+          "postalCode",
+          "province"
+        ]
+      },
+      "ActivateProfileDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john_doe@manulife.ca",
+            "description": "Email"
+          },
+          "referenceNumber": {
+            "type": "string",
+            "example": "xyz11234",
+            "description": "Reference Number"
+          },
+          "apId": {
+            "type": "string",
+            "example": "doejohn",
+            "description": "Email"
+          },
+          "ciamId": {
+            "type": "string",
+            "example": "88d3c9d3-c6a4-44c1-8a07-b478aaa68628",
+            "description": "Email"
+          }
+        },
+        "required": [
+          "email",
+          "referenceNumber",
+          "apId",
+          "ciamId"
+        ]
+      },
+      "UpdateLicenseDto": {
+        "type": "object",
+        "properties": {
+          "licenseNumber": {
+            "type": "string",
+            "example": "ON-56677"
+          },
+          "legalName": {
+            "type": "string",
+            "example": "Abcd"
+          },
+          "effectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2025-12-18T01:16:33.203Z"
+          },
+          "expiredDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2025-12-18T01:16:33.203Z"
+          },
+          "status": {
+            "type": "object",
+            "example": "AUTHORIZED"
+          },
+          "screeningEffectiveDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2025-12-18T01:16:33.203Z"
+          },
+          "screeningStatus": {
+            "type": "string",
+            "example": "APPROVED"
+          }
+        },
+        "required": [
+          "licenseNumber",
+          "legalName",
+          "effectiveDate",
+          "expiredDate",
+          "status",
+          "screeningEffectiveDate",
+          "screeningStatus"
+        ]
+      },
+      "OrganizationLicenseCreatePayloadDto": {
+        "type": "object",
+        "properties": {
+          "organizationCode": {
+            "type": "string",
+            "example": "org_code"
+          },
+          "license": {
+            "description": "License",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LicenseCreateDetailDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "organizationCode",
+          "license"
+        ]
+      },
+      "Role": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}

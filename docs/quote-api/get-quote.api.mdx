@@ -1,0 +1,71 @@
+---
+id: get-quote
+title: "GET /quotes/{quoteId}"
+description: "Retrieve detailed information about a specific quote by its ID"
+sidebar_label: "GET /quotes/{quoteId}"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVMFu2zAM/RWBvWyA6mQ7+rQMK4pchq1NgQFpDozMJGptWZWooIHhfx8oO13aZrssF0fis/Ue36M6aD0FZNu6eQUlbIl/ppYJNDBuI5RLyOsIKw0eAzbEFGS/A4cNQQlPUp9XoME6KMEj70BDoKdkA1VQckikIZodNQhlB3zw8lrkYN0W+n4l4OhbFylK/fN0Ko+KognWCzMoBxKqIkZbR9BgWsfkWIDofW1NljB5iILu3p/Wrh/IMGjwQQSzHc6y1RlGepD0PTVrCmfr2LRpOHwsuQHbazApBHLmcE6pBrZc01EO9PLTb5TeEAdL+6NYqpR1mzY0WaDCdZtYoYqejN1YozJVtT4oy1HNv4GGhnjXjl6KYPGjhEkGxkk32tWDhkhhfzQzhRpK2DH7WE4mHKx/vszQS/S28KEq8DEWDbpU2w0VBuEt8bvZQl25vQ2ta8QaMTaSScHyIR/xlTBQmCXhs1ydlm/FrsGRU9BLB4UWjBmS9TqDckelORk5dnYRrP+lhrjMfsxBg0gcGH4qpsX0He/FjtSbt9SmDWpLLk+G2yp0lWrQ4VYWHHBPtbIupoDO0GBBLO7dvbu4UEKdHI+JlM1ZXeePykhQ5KjG2VD4CqpSHM7K4Ec6FPduTDqaHLZx4AayArpN3rdBXKYGrRiI3l7GYfdLNrEwbZMb5dvIDbqT71xfLdS5WLxqT/dn1P4/mqOdTM888TVaJxOTk9eNOV0OsycjXh4vlpWGXRtZil23xkh3oe572X5KFCRbKw17DBbXEoFlB5WN8r+CcoN1pH9I+nAz3lMf1d/4jZvoDhImrJOsQMMjHU5uv37Va9gRVnJlLLuxOjOGPJ+89+6ykjF4mdjrqwX0/W+LWu5J
+sidebar_class_name: "get api-method"
+info_path: docs/quote-api/tripx-quote-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GET /quotes/\\{quoteId\\}"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/quotes/{quoteId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieve detailed information about a specific quote by its ID
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"quoteId","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Quote details","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"quoteNumber":{"type":"string"},"amount":{"type":"number"},"currency":{"type":"string"}},"title":"Quote"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

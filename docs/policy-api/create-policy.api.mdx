@@ -1,0 +1,71 @@
+---
+id: create-policy
+title: "POST /policies"
+description: "Create a new insurance policy."
+sidebar_label: "POST /policies"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVUtv2zgQ/ivE9ErLThZ70alukQLZXWyMxEE3cIx4TE1sNhLJkpQTr6D/Xgwlx48G6aG+2J73fPPNsIGCgvLaRW0N5PDZE0YSKAw9C21C7dEoEs6WWm0zkGAdeWTjywJyUMl8krQgIeIqQD6DJNAUYC7B0/eaQvxkiy3kTfqrPRWQR1+TBGVNJBNZhc6VWqXgw2+By2kgqDVVyL/i1hHkYJffSEWQB4Fm0JU3ZYu5BOe5yMj58+ZQt48SotdmBRLoBStXsih63FD58NoztK2EqGNSdh1ed61A27LOU3DWhC7L+eiMv47B7LxEB1IBv9HscUu6eL+VruUHXKqz8z+glb3g37pakn/fdXL1z+B8dP7nYDQ6Y88QMdbhTR9TV4w9qqg3lIK4NA8JivErSypg3sqeI8U4vhXl0foKI+RQYKRB1NVbuCfAWwkVxbUtUoMhoYJxDTkM3Y5uEgL5DXkmYQO1LyGHdYwu5MNh9Nq9DDokBuh05nyR4VPIKjR1qR8pUwjyZIK346m4MBvtral4cO2cU6ja67hNOT4RevLjmguZzQ/VNzzMbl6HRq8QcF1ccDKDHJbJCGT/48sOmL++ThMkTJLr/S5d7EZ2zPA3aCxBm0ebMveoTr12/4menePJJUhg0LqWz7JRNvoJiOmaxKmbeLReVGhwpc3q9FhoCgJN0V+OgaeSSSBez0fI7s29+fBBMCxkYr8LLByXZQrfX44g+lUXeGQq6sB50STjJ9pm4tKosi5IbG3td1KhjYhrEvdmwams1/8n94VYExbkc065WCzuzZE6F93UxN3V7fXDeHL58PfFXW/YbzKqRGmD1R5UTnpTO2c9E5Qq1MxBdHoQOunHxMNM2QrkCUMLq0K2V7dpcUOs0BykmVzdTMUh44/m1OxPzK9PeU/ESC9x6ErUhrmSSmr61eova3/J17x1+QyaZomBbn3Ztiz+XpPnZZhL2KDXuGSOzXjzO4DTnjzRlkvqihskrrJ5WVOC5+QWtnLnMVaKXHzXdn5wGBgdXqH+salswT4en/nBwGfIIT1hiYDpNWJZAyWaVY0rtu1i8ucHTnl3RA==
+sidebar_class_name: "post api-method"
+info_path: docs/policy-api/tripx-policy-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"POST /policies"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/policies"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new insurance policy.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["policyType"],"properties":{"policyType":{"type":"string","example":"travel_insurance"}},"title":"PolicyRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Policy created","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","example":"policy_abc123"},"policyNumber":{"type":"string","example":"POL-2025-001"},"status":{"type":"string","enum":["active","expired","cancelled"]},"createdAt":{"type":"string","format":"date-time"}},"title":"Policy"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: generate-recommendations
+title: "POST /recommendations"
+description: "Generate new personalized recommendations based on provided criteria"
+sidebar_label: "POST /recommendations"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2kAQ/SurydUxtEefSqqoyqlRQqRKhMOwHmATe3czuyahyP+9mrUTMNAcqnIxnu9582a8A+eJMRpnb0ooYEVWXumOtKtrsmVSBcgg4ipAMYNjzTwDppeGQrxy5RaKXXo1TCUUkRvKQDsbyUZRofeV0clz9BScFVnQa6pR/sWtJyjALZ5IR8gOAs2gCcQ3pWTzLCVHQ0F8evneO0Q2dgWtGNKSmKzuLIfR2zaDaGIlomFLd1030LZiwxS8s6EL8XU8lkdJQbPxYgwF/OghKxWfgPbPrQ+bPA68d0Bm3EIGJlJ9psvjQOY8Up3gnKJD6IwmaMeHGtvUC+JPYE14dpiex09ZelWeODiLlfl9iqdaYKBSOas8u40pqVSaTSQ2CBnUFNdOKOxdSI1jXEMBo9OhBOINsZB5Bw1XUMA6Rh+K0Siy8W+XQ49L9Cb3XOb4HPIabVOZJeVaUg77eJhM1bXdGHa2lpm3c0mlGzZxm3JdETLxpJG6ZvND9b3woJvQodEHuFKfFJ7MoIBFMkpgC5Xu9vt3/Ya170b2vhnvQzteCPE2dulSnn5kUzb+lxoOTk1ubyADgaxr9Es+zscn7U/XpP7mrpaOVX9ajF0NpxwZN1QptKUyNjSMVtPx6PNH+2gvLpTgQjb2eyTCSVWlDP0NCqo/GgoHpqoJkhi7cp5pmz/afj9Rp/20WO8REKP7xnvHQiWq0QhN0JvL0Em/Jark2tVpCsK5Gu1BnNuf91N1hnwD0Hb7A/G/1qBnTKS3OPIVGivLmli+61didnJO5hmsZWmKGex2Ev2Bq7YV8UtDLOSdZ7BBNrgQlszmbQZrwpI48fqZtlDA966Ty6kUIOZVkw7U8dlrs3ePidbk46e284O9FkQhg0X/laldKT6Mr/KlwFcoADJw/uNCJtkOKrSrBldi28WU3x/mtXZV
+sidebar_class_name: "post api-method"
+info_path: docs/recommendation-api/tripx-recommendation-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"POST /recommendations"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/recommendations"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generate new personalized recommendations based on provided criteria
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["userId"],"properties":{"userId":{"type":"string"},"preferences":{"type":"object"}},"title":"RecommendationRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Generated recommendations","content":{"application/json":{"schema":{"type":"object","properties":{"recommendations":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"type":{"type":"string"},"title":{"type":"string"},"score":{"type":"number"}},"title":"Recommendation"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

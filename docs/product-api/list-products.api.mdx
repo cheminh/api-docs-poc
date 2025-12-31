@@ -1,0 +1,71 @@
+---
+id: list-products
+title: "GET /products"
+description: "Retrieve a list of all available insurance products in the catalog"
+sidebar_label: "GET /products"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVE1v2zAM/SsCd3WdbEeflgFFUWCHYUuBAW0OjMwkamVJo+igQeD/PlDxUq/NtstySUI9fj0+8ggxEaO4GG5baMC7LF84tr2VDBUIbjM093A2rSpIyNiREOvLEQJ2VBw7J1CBC9DAj574ABVku6MOoTmCHJKiXBDaEkMFLW2w9wLN+/kwVOcwFoW2sTj/PVIWdmELw7CqgCmnGDJlff8wn+tXS9myS9oYNPDZZTFxY9JLazYGoSCKxZS8s4WE2WNWh+PbhHH9SFY7TKyUiTulO0d8QSIzlgaEuvzvCK690FY1EnLh4bfOLryfKbz0mNjZadjQd2vi4tYzU7CX3IYKxIlX0ygEGMbPq3LgKwk72pNB40fO0XuDe3Qe156MC7lnDJbOszAuGNmRsSjo4xYq6Eh2UdW4pUIXyg4amE2Gl4n3vwTYs4cGdiIpN7OZsEvPVyP0CpOrE7c1PuW6w9B7t6HaIrwu+26xNNdh7ziGTkWhqspke3ZyKEk+ETLxotdK7lfT528qlNMkp6AziVrYLwHr/3UBFVJd2MSCHMldskvfzUixWXy5hQq0zVON7+t5PX9T+XJH5o2f2UQ2HQbcurA1wrgnbzC0F9ivH8JDePfOaNUUZFwDNS68L7GYfvSUJZcfjsngb1DTZ02CoYCf6FA/hHG90Jb1Glf7VKWCvvUpRdbRUodOp4fJXeWT9WOZYG1jVzhKMUuHYRLn5nppplp4tQ/nvf4/WhynKPQss+TRBd2VIrnjKMz7lxuwqmAXs6jteFxjpjv2w6Dm0x1TJbUua/IWmg36TBU80WFyP/foe00IehT/gJ0cyRf4Sv+wU3yRaAU7wpa4JD35LaylNE3y5vBplPP23VwvYRh+AsLrHuY=
+sidebar_class_name: "get api-method"
+info_path: docs/product-api/tripx-product-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GET /products"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/products"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieve a list of all available insurance products in the catalog
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"limit","in":"query","schema":{"type":"integer","default":10}},{"name":"category","in":"query","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"List of products","content":{"application/json":{"schema":{"type":"object","properties":{"products":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"category":{"type":"string"},"price":{"type":"number"},"currency":{"type":"string"}},"title":"Product"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
